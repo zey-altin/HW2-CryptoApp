@@ -31,4 +31,5 @@
   </li>
 </ol>
 
+<a href="https://github.com/zey-altin/HW2-CryptoApp/assets/79727054/b5dd8e3f-944a-4213-9efb-e493d5197478"><img src="https://github.com/zey-altin/HW2-CryptoApp/assets/79727054/b5dd8e3f-944a-4213-9efb-e493d5197478" align="left" height="600" width="360" title="Home Page"></a>
 
