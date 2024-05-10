@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		210CC5FE2BEC368900CCED42 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210CC5FD2BEC368900CCED42 /* Coin.swift */; };
+		211625A22BEE6C2500D8E412 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 211625A12BEE6C2500D8E412 /* Kingfisher */; };
+		211625A62BEE716000D8E412 /* CoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 211625A52BEE716000D8E412 /* CoinCell.xib */; };
+		211625A72BEE716000D8E412 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211625A42BEE716000D8E412 /* CoinCell.swift */; };
 		2141F6712BEA6BB20058210E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2141F6702BEA6BB20058210E /* AppDelegate.swift */; };
 		2141F6732BEA6BB20058210E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2141F6722BEA6BB20058210E /* SceneDelegate.swift */; };
 		2141F6752BEA6BB20058210E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2141F6742BEA6BB20058210E /* ViewController.swift */; };
@@ -20,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		210CC5FD2BEC368900CCED42 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		211625A42BEE716000D8E412 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
+		211625A52BEE716000D8E412 /* CoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinCell.xib; sourceTree = "<group>"; };
 		2141F66D2BEA6BB20058210E /* HW2_Crypto_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW2_Crypto_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2141F6702BEA6BB20058210E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2141F6722BEA6BB20058210E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211625A22BEE6C2500D8E412 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +55,23 @@
 				210CC5FD2BEC368900CCED42 /* Coin.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2116259F2BEE62B500D8E412 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				211625A32BEE711A00D8E412 /* Cell */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		211625A32BEE711A00D8E412 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				211625A42BEE716000D8E412 /* CoinCell.swift */,
+				211625A52BEE716000D8E412 /* CoinCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		2141F6642BEA6BB20058210E = {
@@ -70,6 +93,7 @@
 		2141F66F2BEA6BB20058210E /* HW2_Crypto_App */ = {
 			isa = PBXGroup;
 			children = (
+				2116259F2BEE62B500D8E412 /* Custom View */,
 				210CC5FC2BEC366D00CCED42 /* Model */,
 				2141F6842BEA6E1D0058210E /* View Controller */,
 				2141F6702BEA6BB20058210E /* AppDelegate.swift */,
@@ -108,6 +132,9 @@
 			dependencies = (
 			);
 			name = HW2_Crypto_App;
+			packageProductDependencies = (
+				211625A12BEE6C2500D8E412 /* Kingfisher */,
+			);
 			productName = HW2_Crypto_App;
 			productReference = 2141F66D2BEA6BB20058210E /* HW2_Crypto_App.app */;
 			productType = "com.apple.product-type.application";
@@ -136,6 +163,9 @@
 				Base,
 			);
 			mainGroup = 2141F6642BEA6BB20058210E;
+			packageReferences = (
+				211625A02BEE6C2500D8E412 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 2141F66E2BEA6BB20058210E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -152,6 +182,7 @@
 			files = (
 				2141F67A2BEA6BB30058210E /* Assets.xcassets in Resources */,
 				2141F67D2BEA6BB30058210E /* Base in Resources */,
+				211625A62BEE716000D8E412 /* CoinCell.xib in Resources */,
 				2141F6782BEA6BB30058210E /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +196,7 @@
 			files = (
 				210CC5FE2BEC368900CCED42 /* Coin.swift in Sources */,
 				2141F6882BEA6E800058210E /* DetailPageViewController.swift in Sources */,
+				211625A72BEE716000D8E412 /* CoinCell.swift in Sources */,
 				2141F6862BEA6E500058210E /* HomePageViewController.swift in Sources */,
 				2141F6752BEA6BB20058210E /* ViewController.swift in Sources */,
 				2141F6712BEA6BB20058210E /* AppDelegate.swift in Sources */,
@@ -246,7 +278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -303,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -328,7 +360,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,7 +389,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,6 +425,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		211625A02BEE6C2500D8E412 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		211625A12BEE6C2500D8E412 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 211625A02BEE6C2500D8E412 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2141F6652BEA6BB20058210E /* Project object */;
 }

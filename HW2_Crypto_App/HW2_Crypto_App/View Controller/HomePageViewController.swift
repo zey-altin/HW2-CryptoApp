@@ -12,7 +12,6 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableViewHeaderLabel: UILabel!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     var coins = [Coins]()
