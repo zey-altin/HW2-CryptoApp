@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct Coin : Decodable {
+struct NewAPI: Decodable {
+    let status : String?
+    let data : Data?
+}
+
+struct Data : Decodable {
+    let coins : [Coins]?
+}
+
+struct Coins : Decodable {
     
     let volume24h : String?
     let btcPrice : String?

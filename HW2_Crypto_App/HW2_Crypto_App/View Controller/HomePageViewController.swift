@@ -15,7 +15,7 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var coins = [Coin]()
+    var coins = [Coins]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,38 +28,50 @@ class HomePageViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        let urlString = "https://psp-merchantpanel-service-sandbox.ozanodeme.com.tr/api/v1/dummy/coins"
-        
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
+        ParsingJson { data in
+            self.coins = data
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: url) { data, response, error in
+        func ParsingJson(completion: @escaping ([Coins])->()){
             
-            if let error = error {
-                print("Error: \(error)")
+            let urlString = "https://psp-merchantpanel-service-sandbox.ozanodeme.com.tr/api/v1/dummy/coins"
+            
+            let url = URL(string: urlString)
+            
+            guard url != nil else {
+                print("url error")
                 return
             }
-            guard let jsonData = data else {
-                print("No data received")
-                return
-            }
-            do {
-                let decodedData = try JSONDecoder().decode(Coin.self, from: jsonData)
-                print("Coins count: \(decodedData.btcPrice ?? "")")
-                self.coins = [decodedData]
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: url!) { data, response, error in
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    return
                 }
-            } catch {
-                print("Error decoding JSON: \(error)")
+                guard let jsonData = data else {
+                    print("No data received")
+                    return
+                }
+                
+                let decoder = JSONDecoder()
+                
+                do {
+                    let parsingData = try decoder.decode(NewAPI.self, from: jsonData)
+                    completion(parsingData.data!.coins!)
+                }catch {
+                    print("Parsing error")
+                }
             }
+            
+            task.resume()
+            
         }
-        
-        task.resume()
     }
 }
 
@@ -72,7 +84,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coinCell", for: indexPath)
         
         //bunu cell custom'a çevir
-        cell.textLabel?.text = coins[indexPath.row].change
+        cell.textLabel?.text = coins[indexPath.row].name
         
         return cell
     }
