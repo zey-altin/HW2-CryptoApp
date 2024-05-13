@@ -13,6 +13,7 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableViewHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var coins = [Coins]()
     
@@ -26,6 +27,10 @@ class HomePageViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        tableView.register(UINib(nibName: CoinCell.identifier, bundle: nil), forCellReuseIdentifier: CoinCell.identifier)
         
         ParsingJson { data in
             self.coins = data
@@ -37,18 +42,16 @@ class HomePageViewController: UIViewController {
         func ParsingJson(completion: @escaping ([Coins])->()){
             
             let urlString = "https://psp-merchantpanel-service-sandbox.ozanodeme.com.tr/api/v1/dummy/coins"
-            
             let url = URL(string: urlString)
             
             guard url != nil else {
-                print("url error")
+                print("Url error")
                 return
             }
                 
             let session = URLSession.shared
             
             let task = session.dataTask(with: url!) { data, response, error in
-                
                 if let error = error {
                     print("Error: \(error)")
                     return
@@ -57,19 +60,15 @@ class HomePageViewController: UIViewController {
                     print("No data received")
                     return
                 }
-                
                 let decoder = JSONDecoder()
-                
                 do {
                     let parsingData = try decoder.decode(NewAPI.self, from: jsonData)
                     completion(parsingData.data!.coins!)
-                }catch {
+                } catch {
                     print("Parsing error")
                 }
             }
-            
             task.resume()
-            
         }
     }
 }
@@ -80,11 +79,23 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "coinCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell else {
+            return UITableViewCell()
+        }
         
-        //bunu cell custom'a çevir
-        cell.textLabel?.text = coins[indexPath.row].name
+        cell.configure(withModel: coins[indexPath.row])
         
+        return cell
+    }
+}
+
+extension HomePageViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "coinCollectionViewCell", for: indexPath)
         return cell
     }
     
